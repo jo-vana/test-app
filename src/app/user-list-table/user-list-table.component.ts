@@ -16,7 +16,7 @@ export class UserListTableComponent implements AfterViewInit, OnInit {
   dataSource: UserListTableDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'firstName', 'lastName' , 'dateOfBirth'];
+  displayedColumns = ['id', 'firstName', 'lastName' , 'dateOfBirth', 'actions'];
 
   ngOnInit() {
     this.dataSource = new UserListTableDataSource();

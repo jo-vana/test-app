@@ -1,1 +1,35 @@
-<app-user-list-table></app-user-list-table>
+<div>    
+        <div>
+            <table class="tftable">
+                <tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Date of Birth</th><th>Actions</th></tr>
+                <tr *ngFor="let user of users">
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.firstName }}</td>
+                    <td>{{ user.lastName }}</td>
+                    <td>{{ user.dateOfBirth }}</td>
+                    <td>
+                        <button mat-icon-button color="primary" 
+                                aria-label="Example icon button with a home icon"
+                                [routerLink]="['/users', user.id]"
+                                (click)="onEdit()">
+                            <mat-icon>edit</mat-icon>
+                          </button>
+                          <button mat-icon-button color="warn" 
+                                aria-label="Example icon button with a home icon"
+                                [routerLink]="['/users']">
+                            <mat-icon>close</mat-icon>
+                          </button>
+                    </td></tr>
+                </table>
+        </div>
+        
+        <div>
+            <router-outlet></router-outlet>
+        </div>
+</div>
+
+
+
+<!-- <app-user-list-table></app-user-list-table> -->
+
+

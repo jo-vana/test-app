@@ -9,7 +9,7 @@ import { ActivatedRoute, Router, Data } from '@angular/router';
 })
 export class UserComponent implements OnInit {
 
-  user: {id: number, Firstname: string, lastName: string, dateOfBirth: string};
+  user: {id: number, firstName: string, lastName: string, dateOfBirth: string};
 
   constructor(private userService: UserService,
               private route: ActivatedRoute,
@@ -22,6 +22,9 @@ export class UserComponent implements OnInit {
           this.user = data['user'];
         }
       );
+      console.log('This user',this.user );
   }
+
+  
 
 }

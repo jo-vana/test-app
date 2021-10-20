@@ -14,6 +14,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { UserListTableComponent } from './user-list-table/user-list-table.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { UserResolver } from './users/user/user-resolver.service';
 
 @NgModule({
   declarations: [
@@ -32,9 +35,11 @@ import { UserListTableComponent } from './user-list-table/user-list-table.compon
     MatMenuModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatIconModule,
+    MatGridListModule
   ],
-  providers: [],
+  providers: [UserResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
