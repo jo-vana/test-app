@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup,Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, Params } from '@angular/router';
+// import { userInfo } from 'os';
 import { UserService } from '../user.service';
 
 @Component({
@@ -24,6 +25,7 @@ export class EditUserComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("Edit user");
+    
     this.route.fragment.subscribe();
     const id = +this.route.snapshot.params['id'];
     this.user = this.usersService.getUser(id);
@@ -38,23 +40,23 @@ export class EditUserComponent implements OnInit {
     });
 
     this.profileForm.setValue({
-        // firstName: 'Tim',
-        // lastName: 'Roth',
-        // dateOfBirth: '6/15/1970'
         firstName: this.user.firstName,
         lastName: this.user.lastName,
         dateOfBirth: this.user.dateOfBirth
+    });
+
+    this.profileForm.valueChanges.subscribe(selectedValue => {
+      console.log('form value changed')
+      console.log(selectedValue)
     })
+
+    
   }
 
-  onUpdateUser() {
-    console.log('Saved', this.userFirst)
-    this.usersService.updateUser(this.user.id, {firstName: this.userFirst, lastName: this.userLast, dateOfBirth: this.userBirth});
-    this.changesSaved = true;
-    this.router.navigate(['../../'], {relativeTo: this.route});
-  }
 
   onSubmit() {
+    this.changesSaved = true;
+    this.router.navigate(['../../'], {relativeTo: this.route});
     console.log(this.profileForm);
   }
 }
