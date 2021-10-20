@@ -1,30 +1,31 @@
-<div>
+
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label for="firstName">First Name</label>
-      <input
-        type="text"
-        id="firstName"
-        class="form-control"
-        [(ngModel)]="user.firstName">
-    </div>
-    <div class="form-group">
-        <label for="lastName">Last Name</label>
+        <label for="first-name">First Name: </label>
         <input
           type="text"
-          id="lastName"
+          id="first-name"
+          formControlName="firstName"
           class="form-control"
-          [(ngModel)]="user.lastName">
+          required>
       </div>
       <div class="form-group">
-        <label for="dateOfBirth">Date of birth</label>
+        <label for="last-name">Last Name: </label>
         <input
           type="text"
-          id="dateOfBirth"
+          id="last-name"
+          formControlName="lastName"
           class="form-control"
-          [(ngModel)]="user.dateOfBirth">
+          required>
       </div>
-    
-    <button
-      class="btn btn-primary"
-      (click)="onUpdateUser()">Save Changes</button>
-  </div>
+      <div class="form-group">
+        <label for="date-of-birth">Date of Birth:</label>
+        <input
+          type="text"
+          id="date-of-birth"
+          formControlName="dateOfBirth"
+          class="form-control"
+          required>
+      </div>
+    <button type="submit" [disabled]="!profileForm.valid">Update</button>
+</form>
