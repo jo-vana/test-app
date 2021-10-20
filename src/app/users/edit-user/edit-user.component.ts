@@ -10,6 +10,10 @@ import { UserService } from '../user.service';
 export class EditUserComponent implements OnInit {
 
   user: {id: number, firstName: string, lastName:string, dateOfBirth: string}
+  userFirst='';
+  userLast='';
+  userBirth='';
+  changesSaved = false;
 
   constructor(private usersService: UserService,
               private route: ActivatedRoute,
@@ -17,6 +21,18 @@ export class EditUserComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("Edit user");
+    this.route.fragment.subscribe();
+    const id = +this.route.snapshot.params['id'];
+    this.user = this.usersService.getUser(id);
+    this.userFirst = this.user.firstName;
+    this.userLast = this.user.lastName;
+    this.userBirth = this.user.dateOfBirth;
   }
 
+  onUpdateUser() {
+    console.log('Saved', this.userFirst)
+    this.usersService.updateUser(this.user.id, {firstName: this.userFirst, lastName: this.userLast, dateOfBirth: this.userBirth});
+    this.changesSaved = true;
+    this.router.navigate(['../../'], {relativeTo: this.route});
+  }
 }

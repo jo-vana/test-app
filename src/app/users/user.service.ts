@@ -37,4 +37,14 @@ export class UserService {
     // );
     // return user;
   }
+
+  updateUser(id: number, userInfo: {firstName: string, lastName: string, dateOfBirth: string}) {
+    
+    const user = this.users.find((u: any) => u.id === id);
+    if (user) {
+      user.firstName = userInfo.firstName;
+      user.lastName = userInfo.lastName;
+      user.dateOfBirth = userInfo.dateOfBirth;
+    }
+  }
 }
