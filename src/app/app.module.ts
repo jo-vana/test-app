@@ -18,6 +18,7 @@ import { UserListTableComponent } from './user-list-table/user-list-table.compon
 import {MatIconModule} from '@angular/material/icon';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { UserResolver } from './users/user/user-resolver.service';
+import { CreateUserComponent } from './users/create-user/create-user.component'
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { UserResolver } from './users/user/user-resolver.service';
     EditUserComponent,
     HomeComponent,
     UserListTableComponent,
+    CreateUserComponent
   ],
   imports: [
     BrowserModule,
