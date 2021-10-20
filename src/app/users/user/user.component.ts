@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
-import { ActivatedRoute, Router, Data } from '@angular/router';
+import { ActivatedRoute, Router, Data, Params } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -16,13 +16,13 @@ export class UserComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-    this.route.data
-      .subscribe(
-        (data: Data) => {
-          this.user = data['user'];
-        }
-      );
-      console.log('This user',this.user );
+    let id = +this.route.snapshot.params['id'];
+    this.user = this.userService.getUser(id);
+
+    this.route.params.subscribe((params: Params) => {
+      id = +params['id'];
+      this.user = this.userService.getUser(id);
+    });
   }
 
   

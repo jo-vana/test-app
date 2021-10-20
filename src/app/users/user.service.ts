@@ -29,11 +29,12 @@ export class UserService {
   }
 
   getUser(id: number) {
-    const user = this.users.find(
-      (u) => {
-        return u.id === id;
-      }
-    );
-    return user;
+    return this.users.find((u: any) => u.id === id);
+    // const user = this.users.find(
+    //   (u) => {
+    //     return u.id === id;
+    //   }
+    // );
+    // return user;
   }
 }
