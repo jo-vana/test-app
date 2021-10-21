@@ -12,7 +12,7 @@ import { UsersComponent } from './users/users.component';
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'users', component: UsersComponent, children: [
-    {path: 'create', component: CreateUserComponent},
+    {path: 'new', component: CreateUserComponent},
     {path: ':id', component: UserComponent, resolve: {User: UserResolver}},
     {path: ':id/edit', component: EditUserComponent}
   ]},
