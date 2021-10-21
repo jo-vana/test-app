@@ -24,6 +24,7 @@ export class UserService {
     }
   ]
 
+
   getUsers() {
     return this.users;
   }
@@ -41,12 +42,16 @@ export class UserService {
 
   updateUser(id: number, userInfo: {firstName: string, lastName: string, dateOfBirth: string}) {
     
-    // const user = this.users.find((u: any) => u.id === id);
-    // if (user) {
-    //   user.firstName = userInfo.firstName;
-    //   user.lastName = userInfo.lastName;
-    //   user.dateOfBirth = userInfo.dateOfBirth;
-    // }
-    // console.log('Changed', user);
+    const user = this.users.find((u: any) => u.id === id);
+    if (user) {
+      user.firstName = userInfo.firstName;
+      user.lastName = userInfo.lastName;
+      user.dateOfBirth = userInfo.dateOfBirth;
+    }
+    console.log('Changed', user);
+  }
+
+  createUser(user: any) {
+    this.users.push(user);
   }
 }
