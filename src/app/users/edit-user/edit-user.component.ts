@@ -24,7 +24,6 @@ export class EditUserComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-    console.log("Edit user");
     
     this.route.fragment.subscribe();
     const id = +this.route.snapshot.params['id'];
@@ -45,18 +44,25 @@ export class EditUserComponent implements OnInit {
         dateOfBirth: this.user.dateOfBirth
     });
 
-    this.profileForm.valueChanges.subscribe(selectedValue => {
-      console.log('form value changed')
-      console.log(selectedValue)
-    })
+    // this.profileForm.valueChanges.subscribe(selectedValue => {
+    //   console.log(selectedValue)
+      
+    // })
 
     
   }
 
+  onUpdateUser() {
+    const newValue = this.profileForm.value;
+    this.usersService.updateUser(this.user.id, {firstName: newValue.firstName, lastName: newValue.lastName, dateOfBirth: newValue.dateOfBirth});
+
+  }
+
 
   onSubmit() {
+    this.onUpdateUser();
     this.changesSaved = true;
     this.router.navigate(['../../'], {relativeTo: this.route});
-    console.log(this.profileForm);
+    // console.log(this.profileForm);
   }
 }
