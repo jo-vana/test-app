@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
 import { User } from 'src/app/user.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-user',
@@ -13,7 +14,10 @@ export class CreateUserComponent implements OnInit {
   profileForm: FormGroup;
   user: {id: number, firstName: string, lastName:string, dateOfBirth: string}
   
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+              private route: ActivatedRoute,
+              private router: Router
+              ) { }
 
   ngOnInit(): void {
     this.profileForm = new FormGroup({
@@ -34,7 +38,7 @@ export class CreateUserComponent implements OnInit {
 
   onSubmit() {
     this.onAddUser();
-    // console.log('New user:', this.profileForm.value);
+    this.router.navigate(['users']);
   }
 
 }
