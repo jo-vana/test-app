@@ -51,21 +51,20 @@ export class UserService {
   
 
   createUser(user: any) {
-    const maxId = Math.max.apply(null, this.users.map(item => item.id));
+    let maxId = Math.max.apply(null, this.users.map(item => item.id));
     console.log('this is max',maxId)
-
-    if (user) {
-      
-      console.log('New user')
-
-    }
-    this.users.push(user);
+    let newId = maxId+1;
+    let objectTwo = {id: newId};
+    let objectOne = user;
+    let newObject = {...objectOne, ...objectTwo}
+    const completeUser = (this.users.push(newObject));
+    
+    // console.log('what is this',newObject)
   
   }
 
   removeUser(id: number, index: number) {
     this.users.splice(index, 1);
-    // console.log('remove', index);
-    
+    // console.log('remove', index);  
   }
 }
