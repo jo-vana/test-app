@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup,Validators } from '@angular/forms';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-// import { userInfo } from 'os';
 import { UserService } from '../user.service';
 
 @Component({
@@ -16,7 +15,7 @@ export class EditUserComponent implements OnInit {
   userLast='';
   userBirth='';
   changesSaved = false;
-
+  id: number;
   profileForm: FormGroup;
 
   constructor(private usersService: UserService,
@@ -25,12 +24,18 @@ export class EditUserComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.route.fragment.subscribe();
-    const id = +this.route.snapshot.params['id'];
-    this.user = this.usersService.getUser(id);
-    this.userFirst = this.user.firstName;
-    this.userLast = this.user.lastName;
-    this.userBirth = this.user.dateOfBirth;
+    this.route.paramMap.subscribe(params => {
+      
+      
+      let userId = +params.get('id');
+      let users = this.usersService.getUsers();
+
+      this.user = users.find(u => u.id == userId);
+      
+      console.log(userId);
+      
+
+    })
 
     this.profileForm = new FormGroup({
       'firstName': new FormControl(null, [Validators.required]),
@@ -43,14 +48,10 @@ export class EditUserComponent implements OnInit {
         lastName: this.user.lastName,
         dateOfBirth: this.user.dateOfBirth
     });
-
-    // this.profileForm.valueChanges.subscribe(selectedValue => {
-    //   console.log(selectedValue)
-      
-    // })
-
     
   }
+
+
 
   onUpdateUser() {
     const newValue = this.profileForm.value;

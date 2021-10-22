@@ -19,12 +19,12 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.users = this.userService.getUsers();
-    // console.log(this.users);
 
   }
 
-  onEdit() {
-    console.log('Edit user');
+  onRemoveUser(index: number) {
+    this.userService.removeUser(index);
   }
+
 
 }

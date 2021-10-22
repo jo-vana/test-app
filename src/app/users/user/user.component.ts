@@ -23,6 +23,7 @@ export class UserComponent implements OnInit {
       id = +params['id'];
       this.user = this.userService.getUser(id);
     });
+   
   }
 
   

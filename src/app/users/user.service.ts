@@ -3,6 +3,8 @@ import { Injectable } from "@angular/core";
 @Injectable({providedIn: 'root'})
 
 export class UserService {
+  // usersChanged =
+
   private users = [
     {
       id: 1,
@@ -30,7 +32,7 @@ export class UserService {
   }
 
   getUser(id: number) {
-    return this.users.find((u: any) => u.id === id);
+    return this.users.find((u) => u.id === id);
    
   }
 
@@ -47,5 +49,10 @@ export class UserService {
 
   createUser(user: any) {
     this.users.push(user);
+  }
+
+  removeUser(index: number) {
+    this.users.splice(index, 1);
+    console.log('remove');
   }
 }
