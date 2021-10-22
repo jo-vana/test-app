@@ -1,12 +1,12 @@
 <div> 
     <hr>  
     <button mat-raised-button color="primary"
-            [routerLink]="['users/create']">Add New User</button>
+            [routerLink]="['new']">Add New User</button>
     <hr>
         <div>
             <table class="tftable">
                 <tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Date of Birth</th><th>Actions</th></tr>
-                <tr *ngFor="let user of users">
+                <tr *ngFor="let user of users; let i = index;">
                     <td>{{ user.id }}</td>
                     <td>{{ user.firstName }}</td>
                     <td>{{ user.lastName }}</td>
@@ -20,7 +20,7 @@
                           </button>
                           <button mat-icon-button color="warn" 
                                 aria-label="Example icon button with a home icon"
-                                (click)=onRemoveUser(0)>
+                                (click)="onRemoveUser(user.id, i)">
                             <mat-icon>close</mat-icon>
                           </button>
                     </td></tr>
