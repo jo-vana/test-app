@@ -33,7 +33,6 @@ export class CreateUserComponent implements OnInit {
     const newUser = new User(value.firstName, value.lastName, value.dateOfBirth);
     this.userService.createUser(newUser);
     
-    console.log("New user", newUser)
     
   }
 

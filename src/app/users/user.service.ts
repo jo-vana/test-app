@@ -1,4 +1,7 @@
+import { identifierModuleUrl, templateJitUrl } from "@angular/compiler";
 import { Injectable } from "@angular/core";
+import { assert } from "console";
+import { User } from "../user.model";
 
 @Injectable({providedIn: 'root'})
 
@@ -25,7 +28,6 @@ export class UserService {
     }
   ]
 
-
   getUsers() {
     return this.users;
   }
@@ -46,8 +48,19 @@ export class UserService {
     console.log('Changed', user);
   }
 
+  
+
   createUser(user: any) {
+    const maxId = Math.max.apply(null, this.users.map(item => item.id));
+    console.log('this is max',maxId)
+
+    if (user) {
+      
+      console.log('New user')
+
+    }
     this.users.push(user);
+  
   }
 
   removeUser(id: number, index: number) {
