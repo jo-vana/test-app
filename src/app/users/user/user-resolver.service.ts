@@ -19,6 +19,6 @@ export class UserResolver implements Resolve<{id: number, firstName: string, las
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): 
     Observable<User> | Promise<User> | User {
-    return this. userService.getUser(+route.params['id']);
+    return this.userService.getUser(+route.params['id']);
   }
 }

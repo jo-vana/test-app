@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
 import { User } from 'src/app/user.model';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,6 +14,8 @@ export class CreateUserComponent implements OnInit {
 
   profileForm: FormGroup;
   user: {id: number, firstName: string, lastName:string, dateOfBirth: string}
+  datePattern = "";
+
   
   constructor(private userService: UserService,
               private route: ActivatedRoute,
@@ -25,7 +27,7 @@ export class CreateUserComponent implements OnInit {
     this.profileForm = this.formBuilder.group({
       'firstName': ['',Validators.required],
       'lastName': ['',Validators.required],
-      'dateOfBirth': ['',Validators.required]
+      'dateOfBirth': ['',[Validators.required, Validators.pattern(this.datePattern)]]
     });
     
   }

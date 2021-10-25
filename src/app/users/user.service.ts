@@ -1,7 +1,4 @@
-import { identifierModuleUrl, templateJitUrl } from "@angular/compiler";
 import { Injectable } from "@angular/core";
-import { assert } from "console";
-import { User } from "../user.model";
 
 @Injectable({providedIn: 'root'})
 
