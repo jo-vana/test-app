@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup,Validators } from '@angular/forms';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { UserService } from '../user.service';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-user',
@@ -20,7 +21,8 @@ export class EditUserComponent implements OnInit {
 
   constructor(private usersService: UserService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     
@@ -37,10 +39,15 @@ export class EditUserComponent implements OnInit {
 
     })
 
-    this.profileForm = new FormGroup({
-      'firstName': new FormControl(null, [Validators.required]),
-      'lastName': new FormControl(null, [Validators.required]),
-      'dateOfBirth': new FormControl(null, [Validators.required])
+    // this.profileForm = new FormGroup({
+    //   'firstName': new FormControl(null, [Validators.required]),
+    //   'lastName': new FormControl(null, [Validators.required]),
+    //   'dateOfBirth': new FormControl(null, [Validators.required])
+    // });
+    this.profileForm = this.formBuilder.group({
+      'firstName': ['',Validators.required],
+      'lastName': ['',Validators.required],
+      'dateOfBirth': ['',Validators.required]
     });
 
     this.profileForm.setValue({
@@ -50,8 +57,6 @@ export class EditUserComponent implements OnInit {
     });
     
   }
-
-
 
   onUpdateUser() {
     const newValue = this.profileForm.value;

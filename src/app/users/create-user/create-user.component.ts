@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
 import { User } from 'src/app/user.model';
@@ -16,14 +17,15 @@ export class CreateUserComponent implements OnInit {
   
   constructor(private userService: UserService,
               private route: ActivatedRoute,
-              private router: Router
+              private router: Router,
+              private formBuilder: FormBuilder
               ) { }
 
   ngOnInit(): void {
-    this.profileForm = new FormGroup({
-      'firstName': new FormControl(null, [Validators.required]),
-      'lastName': new FormControl(null, [Validators.required]),
-      'dateOfBirth': new FormControl(null, [Validators.required])
+    this.profileForm = this.formBuilder.group({
+      'firstName': ['',Validators.required],
+      'lastName': ['',Validators.required],
+      'dateOfBirth': ['',Validators.required]
     });
     
   }

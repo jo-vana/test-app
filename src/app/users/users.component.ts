@@ -20,7 +20,6 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.users = this.userService.getUsers();
     
-
   }
 
   onRemoveUser(id: number, index: number) {
