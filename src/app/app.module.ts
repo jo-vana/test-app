@@ -19,7 +19,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { UserResolver } from './users/user/user-resolver.service';
 import { CreateUserComponent } from './users/create-user/create-user.component';
-
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,10 @@ import { CreateUserComponent } from './users/create-user/create-user.component';
     MatIconModule,
     MatGridListModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatFormFieldModule
   ],
   providers: [UserResolver],
   bootstrap: [AppComponent]

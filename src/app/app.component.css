@@ -1,0 +1,40 @@
+:host {
+    background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+    background: linear-gradient(to right, #25c481, #25b7c4);
+    font-family: 'Roboto', sans-serif;
+}
+.mat-toolbar {
+    background-color: #fff;
+}
+button.mat-menu-trigger {
+    border: 1px solid #25b7c4;
+    border-radius: 5px;
+    background-color: #fff;
+}
+button.mat-menu-trigger:hover {
+    cursor: pointer;
+}
+.mat-icon {
+    color: #25b7c4;
+}
+::ng-deep .mat-menu-panel {
+    background: #fff;
+    padding: 20px;
+}
+::ng-deep .mat-menu-content {
+    display: flex;
+    flex-direction: column;
+}
+::ng-deep .mat-menu-content button {
+    margin: 5px 0;
+    background: #25b7c4;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px;
+}
+::ng-deep .mat-menu-content button:hover {
+    cursor: pointer;
+    background: -webkit-linear-gradient(left, #25c481ab, #25b7c4c2);
+    background: linear-gradient(to right, #25c481ab, #25b7c4c2);
+}

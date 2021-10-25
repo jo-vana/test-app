@@ -15,13 +15,13 @@ export class CreateUserComponent implements OnInit {
   profileForm: FormGroup;
   user: {id: number, firstName: string, lastName:string, dateOfBirth: string}
   datePattern = "";
-
   
   constructor(private userService: UserService,
               private route: ActivatedRoute,
               private router: Router,
               private formBuilder: FormBuilder
-              ) { }
+              ) { 
+  }
 
   ngOnInit(): void {
     this.profileForm = this.formBuilder.group({

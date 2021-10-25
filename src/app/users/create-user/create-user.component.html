@@ -1,46 +1,51 @@
-
-<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-        <label for="first-name">First Name: </label>
-        <input
-          type="text"
-          id="first-name"
-          formControlName="firstName"
-          class="form-control"
-          required>
-          <div
-              *ngIf="!profileForm.get('firstName').valid && profileForm.get('firstName').touched"
-              class="help-block">
-              <span>This field is required!</span>
+<div class="form-wrapper">
+    <h3>Create new user:</h3>
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="user-form">
+        <div class="form-group">
+            <label for="first-name">First Name: </label>
+            <input
+              type="text"
+              id="first-name"
+              formControlName="firstName"
+              class="form-control"
+              required>
+              <div
+                  *ngIf="!profileForm.get('firstName').valid && profileForm.get('firstName').touched"
+                  class="help-block">
+                  <span>This field is required!</span>
+              </div>
           </div>
-      </div>
-      <div class="form-group">
-        <label for="last-name">Last Name: </label>
-        <input
-          type="text"
-          id="last-name"
-          formControlName="lastName"
-          class="form-control"
-          required>
-          <div
-              *ngIf="!profileForm.get('lastName').valid && profileForm.get('lastName').touched"
-              class="help-block">
-              <span>This field is required!</span>
+          <div class="form-group">
+            <label for="last-name">Last Name: </label>
+            <input
+              type="text"
+              id="last-name"
+              formControlName="lastName"
+              class="form-control"
+              required>
+              <div
+                  *ngIf="!profileForm.get('lastName').valid && profileForm.get('lastName').touched"
+                  class="help-block">
+                  <span>This field is required!</span>
+              </div>
           </div>
-      </div>
-      <div class="form-group">
-        <label for="date-of-birth">Date of Birth:</label>
-        <input
-          type="date"
-          id="date-of-birth"
-          formControlName="dateOfBirth"
-          class="form-control"
-          required>
-          <div
-              *ngIf="!profileForm.get('dateOfBirth').valid && profileForm.get('dateOfBirth').touched"
-              class="help-block">
-              <span>This field is required!</span>
+          <div class="form-group">
+            <label for="date-of-birth">Date of Birth:</label>
+            <input
+              type="date"
+              id="date-of-birth"
+              formControlName="dateOfBirth"
+              class="form-control"
+              required>
+              
+              <div
+                  *ngIf="!profileForm.get('dateOfBirth').valid && profileForm.get('dateOfBirth').touched"
+                  class="help-block">
+                  <span>This field is required!</span>
+              </div>
           </div>
-      </div>
-    <button type="submit" [disabled]="!profileForm.valid">Save</button>
-</form>
+        <button type="submit" 
+                [disabled]="!profileForm.valid"
+                class="submit-btn">Save</button>
+    </form>
+</div>

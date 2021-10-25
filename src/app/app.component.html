@@ -1,7 +1,7 @@
 <div>
       <mat-toolbar>
-        <button mat-button [matMenuTriggerFor]="menu">Menu</button>
-      <mat-menu #menu="matMenu">
+        <button mat-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
+      <mat-menu #menu="matMenu" class="mat-menu_style">
         <button mat-button routerLink="">Home</button>
         <button mat-button routerLink="/users">Users</button>
       </mat-menu>

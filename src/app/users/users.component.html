@@ -1,11 +1,12 @@
-<div> 
-    <hr>  
+<div class="container"> 
+    <div class="users-heading">  
     <button mat-raised-button color="primary"
+            class="add-btn"
             [routerLink]="['new']">Add New User</button>
-    <hr>
-        <div>
+            </div>
+    <div>
             <table class="tftable">
-                <tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Date of Birth</th><th>Actions</th></tr>
+                <tr class="header-table"><th>ID</th><th>First Name</th><th>Last Name</th><th>Date of Birth</th><th>Actions</th></tr>
                 <tr *ngFor="let user of users; let i = index;">
                     <td>{{ user.id }}</td>
                     <td>{{ user.firstName }}</td>
@@ -15,12 +16,14 @@
                         <button mat-icon-button color="primary" 
                                 aria-label="Example icon button with a home icon"
                                 [routerLink]="['/users', user.id, 'edit']"
+                                class="edit-btn"
                                 >
                             <mat-icon>edit</mat-icon>
                           </button>
                           <button mat-icon-button color="warn" 
                                 aria-label="Example icon button with a home icon"
-                                (click)="onRemoveUser(user.id, i)">
+                                (click)="onRemoveUser(user.id, i)"
+                                class="remove-btn">
                             <mat-icon>close</mat-icon>
                           </button>
                     </td></tr>
