@@ -9,19 +9,19 @@ export class UserService {
       id: 1,
       firstName: 'Tim',
       lastName: 'Roth',
-      dateOfBirth: '6/15/1970'
+      dateOfBirth: '1970-06-26'
     },
     {
       id: 2,
       firstName: 'Bob',
       lastName: 'Seget',
-      dateOfBirth: '6/20/1980'
+      dateOfBirth: '1980-07-01'
     },
     {
       id: 3,
       firstName: 'Anna',
       lastName: 'Faris',
-      dateOfBirth: '6/30/1990'
+      dateOfBirth: '1990-09-11'
     }
   ]
 
