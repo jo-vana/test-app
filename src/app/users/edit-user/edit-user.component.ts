@@ -35,7 +35,17 @@ export class EditUserComponent implements OnInit {
       this.user = users.find(u => u.id == userId);
       
       console.log(userId);
-      
+      this.profileForm = this.formBuilder.group({
+        'firstName': ['',Validators.required],
+        'lastName': ['',Validators.required],
+        'dateOfBirth': ['',Validators.required]
+      });
+  
+      this.profileForm.setValue({
+          firstName: this.user.firstName,
+          lastName: this.user.lastName,
+          dateOfBirth: this.user.dateOfBirth
+      });
 
     })
 
@@ -44,17 +54,7 @@ export class EditUserComponent implements OnInit {
     //   'lastName': new FormControl(null, [Validators.required]),
     //   'dateOfBirth': new FormControl(null, [Validators.required])
     // });
-    this.profileForm = this.formBuilder.group({
-      'firstName': ['',Validators.required],
-      'lastName': ['',Validators.required],
-      'dateOfBirth': ['',Validators.required]
-    });
-
-    this.profileForm.setValue({
-        firstName: this.user.firstName,
-        lastName: this.user.lastName,
-        dateOfBirth: this.user.dateOfBirth
-    });
+    
     
   }
 

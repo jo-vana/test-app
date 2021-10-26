@@ -11,8 +11,8 @@ export class UsersComponent implements OnInit {
 
   public users: {id: number, firstName: string, lastName: string, dateOfBirth: string}[] = [];
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'dateOfBirth'];
-
-
+  user: {id: number, firstName: string, lastName:string, dateOfBirth: string}
+  userId: number;
   constructor(private userService: UserService,
               private router: Router,
               private route: ActivatedRoute) { }
@@ -24,7 +24,7 @@ export class UsersComponent implements OnInit {
 
   onRemoveUser(id: number, index: number) {
     this.userService.removeUser(id, index);
-    // console.log('this is index',index)
+    this.router.navigate(['/users']);
   }
 
 
