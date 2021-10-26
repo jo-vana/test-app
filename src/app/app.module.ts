@@ -22,6 +22,7 @@ import { CreateUserComponent } from './users/create-user/create-user.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatDatepickerModule,
     MatFormFieldModule
   ],
-  providers: [UserResolver],
+  providers: [UserResolver, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

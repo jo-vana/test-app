@@ -9,6 +9,11 @@
             formControlName="firstName"
             class="form-control"
             required>
+            <div
+              *ngIf="!profileForm.get('firstName').valid && profileForm.get('firstName').touched"
+              class="help-block">
+              <span>This field is required!</span>
+            </div>
         </div>
         <div class="form-group">
           <label for="last-name">Last Name: </label>
@@ -18,6 +23,11 @@
             formControlName="lastName"
             class="form-control"
             required>
+            <div
+              *ngIf="!profileForm.get('lastName').valid && profileForm.get('lastName').touched"
+              class="help-block">
+              <span>This field is required!</span>
+            </div>
         </div>
         <div class="form-group">
           <label for="date-of-birth">Date of Birth:</label>
@@ -27,6 +37,11 @@
             formControlName="dateOfBirth"
             class="form-control"
             required>
+            <div
+              *ngIf="!profileForm.get('dateOfBirth').valid && profileForm.get('dateOfBirth').touched"
+              class="help-block">
+              <span>This field is required!</span>
+            </div>
         </div>
       <button type="submit" 
               [disabled]="!profileForm.valid"

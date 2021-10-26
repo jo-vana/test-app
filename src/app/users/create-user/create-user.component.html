@@ -43,6 +43,11 @@
                   class="help-block">
                   <span>This field is required!</span>
               </div>
+              <div
+                *ngIf="wrongDate === true"
+                class="help-block">
+                <span>Please enter the valid date!</span>
+            </div>
           </div>
         <button type="submit" 
                 [disabled]="!profileForm.valid"
