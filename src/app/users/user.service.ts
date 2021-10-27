@@ -48,7 +48,7 @@ export class UserService {
   
 
   createUser(user: any) {
-    let maxId = Math.max.apply(null, this.users.map(item => item.id));
+    let maxId = Math.max(...this.users.map(item => item.id));
     console.log('this is max',maxId)
     let newId = maxId+1;
     let objectTwo = {id: newId};
