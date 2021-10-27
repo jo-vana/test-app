@@ -33,8 +33,12 @@ button.mat-menu-trigger:hover {
     color: #fff;
     padding: 10px;
 }
-::ng-deep .mat-menu-content button:hover {
-    cursor: pointer;
+::ng-deep .mat-menu-content button.active {
     background: -webkit-linear-gradient(left, #25c481ab, #25b7c4c2);
     background: linear-gradient(to right, #25c481ab, #25b7c4c2);
+}
+::ng-deep .mat-menu-content button:hover {
+    cursor: pointer;
+    background: -webkit-linear-gradient(right, #25c481ab, #25b7c4c2);
+    background: linear-gradient(to left, #25c481ab, #25b7c4c2);
 }

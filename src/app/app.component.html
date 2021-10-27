@@ -2,8 +2,9 @@
       <mat-toolbar>
         <button mat-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
       <mat-menu #menu="matMenu" class="mat-menu_style">
-        <button mat-button routerLink="">Home</button>
-        <button mat-button routerLink="/users">Users</button>
+        <button mat-button routerLinkActive="active" routerLink="/"
+        [routerLinkActiveOptions]="{exact: true}">Home</button>
+        <button mat-button routerLinkActive="active" routerLink="/users">Users</button>
       </mat-menu>
       </mat-toolbar>
 </div>
