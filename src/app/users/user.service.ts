@@ -50,14 +50,11 @@ export class UserService {
   createUser(user: any) {
     let maxId = Math.max(...this.users.map(item => item.id));
     console.log('this is max',maxId)
-    let newId = maxId+1;
+    let newId = maxId > 0 ? maxId+1 : 1; //if id doesn't exist add id 1
     let objectTwo = {id: newId};
     let objectOne = user;
     let newObject = {...objectOne, ...objectTwo}
     const completeUser = (this.users.push(newObject));
-    
-    // console.log('what is this',newObject)
-  
   }
 
   removeUser(id: number, index: number) {
