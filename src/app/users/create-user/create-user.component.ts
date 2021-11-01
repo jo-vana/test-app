@@ -5,6 +5,7 @@ import { UserService } from '../user.service';
 import { User } from 'src/app/user.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { DataStorageService } from 'src/app/data-storage.service';
 
 @Component({
   selector: 'app-create-user',
@@ -23,7 +24,8 @@ export class CreateUserComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private formBuilder: FormBuilder,
-              public datePipe: DatePipe
+              public datePipe: DatePipe,
+              private dataStorageService: DataStorageService
               ) { 
   }
 
@@ -48,6 +50,7 @@ export class CreateUserComponent implements OnInit {
       return this.wrongDate === true;
     }
     this.userService.createUser(newUser);
+    this.dataStorageService.storeUsers();
     this.router.navigate(['users']);
         
   }
