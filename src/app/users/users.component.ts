@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DataStorageService } from '../data-storage.service';
+import { User } from '../user.model';
 import { UserService } from './user.service';
 
 @Component({
@@ -9,17 +11,25 @@ import { UserService } from './user.service';
 })
 export class UsersComponent implements OnInit {
 
-  public users: {id: number, firstName: string, lastName: string, dateOfBirth: string}[] = [];
+  public users: User[] = [];
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'dateOfBirth'];
-  user: {id: number, firstName: string, lastName:string, dateOfBirth: string}
+  user: User;
   userId: number;
   constructor(private userService: UserService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private dataStorageService: DataStorageService) { }
 
   ngOnInit(): void {
     this.users = this.userService.getUsers();
+    // this.users = this.dataStorageService.fetchUsers();
     
+    console.log('The start...', this.users);
+  }
+
+  onFetchUser($event: any) {
+    
+    this.users = this.dataStorageService.fetchUsers();
   }
 
   onRemoveUser(id: number, index: number) {

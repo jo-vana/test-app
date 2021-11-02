@@ -40,7 +40,7 @@ export class CreateUserComponent implements OnInit {
 
   onAddUser() {
     const value = this.profileForm.value;
-    const newUser = new User(value.firstName, value.lastName, value.dateOfBirth);
+    const newUser = new User(value.id, value.firstName, value.lastName, value.dateOfBirth);
     this.birthDate = newUser.dateOfBirth;
     this.currentDate = new Date();
     let currentDateTransform = this.datePipe.transform(this.currentDate, 'yyyy-MM-dd');

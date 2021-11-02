@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { User } from "./user.model";
 import { UserService } from "./users/user.service";
 
 
@@ -12,7 +13,7 @@ export class DataStorageService {
 
     storeUsers() {
         const users = this.userService.getUsers();
-        this.http.put('https://test-app-171e0-default-rtdb.firebaseio.com/users.json', users).subscribe(
+        this.http.post('https://test-app-171e0-default-rtdb.firebaseio.com/users.json', users).subscribe(
             response => {
                 console.log(response);
             }
@@ -20,9 +21,13 @@ export class DataStorageService {
     }
 
     fetchUsers() {
-        this.http.get('https://test-app-171e0-default-rtdb.firebaseio.com/users.json')
+        
+        this.http.get<User[]>('https://test-app-171e0-default-rtdb.firebaseio.com/users.json')
+            
             .subscribe(users => {
-                console.log(users);
+                this.userService.setUsers(users);
+                console.log('This is a new users list:', users);
+
             })
     }
 }

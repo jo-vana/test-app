@@ -1,10 +1,13 @@
 import { Injectable } from "@angular/core";
+import { Subject } from "rxjs";
+import { User } from "../user.model";
 
 @Injectable({providedIn: 'root'})
 
 export class UserService {
+  usersChanged = new Subject<User[]>();
 
-  private users = [
+  private users: User[] = [
     {
       id: 1,
       firstName: 'Tim',
@@ -32,6 +35,11 @@ export class UserService {
   getUser(id: number) {
     return this.users.find((u) => u.id === id);
    
+  }
+
+  setUsers(users: User[]) {
+    this.users = users;
+    this.usersChanged.next(this.users.slice());
   }
 
   updateUser(id: number, userInfo: {firstName: string, lastName: string, dateOfBirth: string}) {
